@@ -1,4 +1,4 @@
-const budget = module.exports = [
+const budgets = [
     {
       date: "April 1",
       name: "Income",
@@ -71,4 +71,4 @@ const budget = module.exports = [
     },
   ];
 
-  module.exports = budget;
+  module.exports = budgets;

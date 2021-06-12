@@ -6,7 +6,7 @@ const port = 3000;
 
 //Require
 
-const budget = require('./models/budget.js');
+const budgets = require('./models/budgets.js');
 
 // CREATE STATIC STYLE
 
@@ -21,14 +21,24 @@ app.listen(3000,function(){
 
 //INDEX ROUTE
 
-app.get("/budget/", (req, res) => {
-  
-    res.send(budget);
-});
+app.get('/', (req, res) => {
+    res.send(budgets);
+  });
+
+  //New Budget Route 
+
+  app.get('/budgets', (req, res) => {
+    res.render(
+        'index.ejs',
+        {
+            allBudget:budgets
+        }
+    );
+  });
 
   // NEW INDEX ROUTE
 
-  app.get("/budget:/id", (req, res) => { 
+  app.get("/budgets:/id", (req, res) => { 
       
     res.render('index.ejs', {
         allBudget:budget
@@ -37,7 +47,7 @@ app.get("/budget/", (req, res) => {
 
    // NEW SHOW ROUTE 
 
- app.get('/budget/:indexOfBudgetArray', (req, res)=>{
+ app.get('/budgets/:indexOfBudgetArray', (req, res)=>{
      res.render('show.ejs');
  })
    
