@@ -4,6 +4,22 @@
     <%- include(`./partials/head.ejs`);%>
 
     <title>New Budget</title>
+
+    <a href='/budgets'>Back to Index</a>
+
+<body>
+
+  <h1>New Budget</h1>
+  
+  <form action="/budgets" method="POST">
+    Name: <input type="text" name="name" /><br />
+    Price: <input type="text" num="num" /><br />
+    
+    <input type="submit" value="Create Budget">
+  </form>
+</body>
+</html>
+
 </head>
 <body>
     
