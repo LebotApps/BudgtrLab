@@ -1,58 +1,49 @@
-//Setting Variables
+// require packages for Express
 
-const express = require("express");
+const { name } = require('ejs');
+const express = require('express');
+
 const app = express();
+
+
+//set port to a variable
+
 const port = 3000;
 
-//Require
+//Exported drinks data 
 
 const budgets = require('./models/budgets.js');
 
-// CREATE STATIC STYLE
-
-app.use(express.urlencoded({extended: false}));
-app.use(express.static('public'))
-
-//Verify Server is listening
-
-app.listen(3000,function(){
-    console.log(`listening`);
-})
-
-//INDEX ROUTE
+//Get Index 
 
 app.get('/', (req, res) => {
     res.send(budgets);
-  });
+});
 
-  //New Budget Route 
-
-  app.get('/budgets', (req, res) => {
+// Index Route
+app.get('/budgets/', (req, res) => {
     res.render(
         'index.ejs',
         {
-            allBudget:budgets
+            allBudgets:budgets
         }
     );
   });
 
-  // NEW INDEX ROUTE
-
-  app.get("/budgets:/id", (req, res) => { 
-      
-    res.render('index.ejs', {
-        allBudget:budget
-    });
-    });
+  // NEW
+app.get("/budgets/new", (req, res) => {
+  res.render('new.ejs');
+});
 
    // NEW SHOW ROUTE 
-
- app.get('/budgets:indexOfBudgetsArray', (req, res)=>{
-     res.render('show.ejs');
- })
    
-   
+  app.get('/budgets:indexOfBudgetsArray', (req, res)=>{
+    res.render('show.ejs', {
+      budgets: budgets[req.params.indexOfBudgetsArray]
+    });
+  });
 
-
-
+app.listen(3000, () =>{
+  console.log('listening');
+});
 
