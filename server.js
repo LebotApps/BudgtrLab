@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 
    // NEW SHOW ROUTE 
 
- app.get('/budgets/:indexOfBudgetArray', (req, res)=>{
+ app.get('/budgets:indexOfBudgetsArray', (req, res)=>{
      res.render('show.ejs');
  })
    
