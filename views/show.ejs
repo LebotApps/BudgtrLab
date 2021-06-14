@@ -9,8 +9,10 @@
     <div class="container">
         <h1>Retirement</h1>
 
-        <a href="/budgets" type="button">Back</a>
-
+        <form action="/budgets">
+            <input type="submit" value="BACK" />
+        </form>
+        
         <p>date</p><%= budgets.date %> 
         <p>name</p> <%= budgets.name %> 
         <p>from</p> <%= budgets.from %> 
