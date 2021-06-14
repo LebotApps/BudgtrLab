@@ -14,7 +14,11 @@ const port = 3000;
 
 const budgets = require('./models/budgets.js');
 
-//Get Index 
+//Middleware
+
+app.use(express.urlencoded({extended: false}));
+
+//Root Route 
 
 app.get('/', (req, res) => {
     res.send(budgets);
@@ -30,12 +34,19 @@ app.get('/budgets/', (req, res) => {
     );
   });
 
-  // NEW
-app.get("/budgets/new", (req, res) => {
+// NEW ROUTE
+app.get('/budgets/new', (req, res) => {
   res.render('new.ejs');
 });
 
-   // NEW SHOW ROUTE 
+// CREATE ROUTE
+  app.post('/budgets', (req, res)=>{
+    budgets.push(req.body);
+    res.redirect('/budgets');
+  });
+
+
+   // SHOW ROUTE 
    
   app.get('/budgets:indexOfBudgetsArray', (req, res)=>{
     res.render('show.ejs', {
